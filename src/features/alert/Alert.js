@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-export const Alert = ({ msg, type, setError }) => {
+
+export const Alert = ({ msg, type, setMsg }) => {
   const [msgType, setMsgType] = useState("alert alert-info");
   useEffect(() => {
-    switch (type) {
+    switch (type.toLowerCase()) {
       case "error":
         setMsgType("alert-danger");
         break;
@@ -19,11 +20,11 @@ export const Alert = ({ msg, type, setError }) => {
         setMsgType("alert-info");
         break;
     }
-  }, [type]);
+  }, [type,setMsgType]);
 
   useEffect(() => {
     setTimeout(() => {
-      setError("");
+      setMsg("");
     }, 5000);
   }, [msg]);
   return (
@@ -32,7 +33,7 @@ export const Alert = ({ msg, type, setError }) => {
       <div className={`row alert-msg alert ${msgType}`} role="alert">
         <div className="col-10 text-uppercase ">{type}</div>
         <div className="col-2">
-          <FontAwesomeIcon icon={faClose} onClick={() => setError("")} />
+          <FontAwesomeIcon icon={faClose} onClick={() => setMsg("")} />
         </div>
         <div className="col12">{msg}</div>
       </div>,

@@ -3,11 +3,11 @@ import { Routes,Route } from 'react-router-dom';
 import './App.css';
 import { NotFound } from './views/NotFound';
 import { Dashboard } from './views/Dashboard';
-import { Overview } from './components/Overview';
-import { ManageItem } from './components/ManageItem';
-import { AllItem, AllItems } from './components/AllItems';
-import { Analytics } from './components/Analytics';
-import { Notifications } from './components/Notifications';
+import { Overview } from './features/overview/Overview';
+import { ManageItem } from './features/manageItems/ManageItem';
+import { AllItem, AllItems } from './features/allItems/AllItems';
+import { Analytics } from './features/analytics/Analytics';
+import { Notifications } from './features/notification/Notifications';
 
 function App() {
   return (

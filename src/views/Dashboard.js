@@ -1,8 +1,8 @@
 import React from "react";
 
-import { SideNav } from "../components/SideNav";
+import { SideNav } from "../features/navigation/SideNav";
 import { Outlet } from "react-router-dom";
-import { MainNav } from "../components/MainNav";
+import { MainNav } from "../features/navigation/MainNav";
 
 export const Dashboard = () => {
   return (

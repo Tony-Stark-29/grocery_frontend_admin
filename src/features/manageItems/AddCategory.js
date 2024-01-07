@@ -1,40 +1,22 @@
-import React, {useState } from "react";
-import {Alert} from "../components/Alert";
+import React, { useState } from "react";
+import { Alert } from "../alert/Alert";
+import { addNewCategory } from "./api";
 
 export const AddCategory = () => {
   const [newCategory, setNewCategory] = useState("");
   const [msg, setMsg] = useState("");
   const [msgType, setMsgType] = useState("");
 
-  const handleNewCadegory=async(category)=>{
-
-     console.log(category);
-    const res=await fetch('grocery/category',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify({category})
-    })
-
-    const data=await res.json();
-
-    if(res.ok)
-    {
-
+  const handleNewCadegory = async (category) => {
+    try {
+      const data = await addNewCategory(category);
       setMsg(`${data.category} Added`);
-      setMsgType('Success');
-
+      setMsgType("success");
+    } catch (error) {
+      setMsg(error.message);
+      setMsgType("error");
     }
-    if(!res.ok)
-    {
-
-      setMsg(data.error);
-      setMsgType('Success');
-
-    }
-
-  }
+  };
 
   return (
     <form
@@ -51,15 +33,18 @@ export const AddCategory = () => {
               type="text"
               placeholder="Category"
               className="form-control my-2 "
-              onChange={(e)=>setNewCategory(e.target.value)}
+              onChange={(e) => setNewCategory(e.target.value)}
             />
           </div>
-          <button className="btn btn-outline-success col-12 col-md-2" type="submit" onClick={()=>handleNewCadegory(newCategory)}>
+          <button
+            className="btn btn-outline-success col-12 col-md-2"
+            type="submit"
+            onClick={() => handleNewCadegory(newCategory)}
+          >
             Add
           </button>
         </div>
-        {msg && <Alert msg={msg} type={msgType} setError={setMsg}/> }
-         
+        {msg && <Alert msg={msg} type={msgType} setError={setMsg} />}
       </div>
     </form>
   );
