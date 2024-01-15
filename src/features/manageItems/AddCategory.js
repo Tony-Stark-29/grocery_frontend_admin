@@ -24,10 +24,9 @@ export const AddCategory = () => {
       className="row shadow-sm border border-2 rounded-3  px-3 py-4 m-2"
     >
       <div className="col-12">
-        <div className="row">
+        <div className="row align-items-center justify-content-evenly">
           <h3 className="heading-4 col-12 col-md-3">New Category</h3>
-        </div>
-        <div className="row">
+
           <div className="col-12 col-md-6">
             <input
               type="text"
@@ -37,14 +36,14 @@ export const AddCategory = () => {
             />
           </div>
           <button
-            className="btn btn-outline-success col-12 col-md-2"
+            className="btn btn-outline-success col-12 col-md-2 w-25 "
             type="submit"
             onClick={() => handleNewCadegory(newCategory)}
           >
             Add
           </button>
         </div>
-        {msg && <Alert msg={msg} type={msgType} setError={setMsg} />}
+        {msg && <Alert msg={msg} type={msgType} setMsg={setMsg} />}
       </div>
     </form>
   );

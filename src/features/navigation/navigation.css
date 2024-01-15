@@ -1,0 +1,10 @@
+
+nav , #navbarNav
+{
+    background-color: var(--navbar-primary);
+}
+
+a
+{
+    color: #fff;
+}
