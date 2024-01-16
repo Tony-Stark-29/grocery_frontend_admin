@@ -4,13 +4,11 @@ import './App.css';
 import { NotFound } from './views/NotFound';
 import { Home } from './views/Home';
 import { Overview } from './features/overview/Overview';
-import { ManageItem } from './features/manageItems/ManageItem';
-import { AllItem, AllItems, Products } from './features/products/Products';
-import { Analytics } from './features/analytics/Analytics';
-import { Notifications } from './features/notification/Notifications';
+ import {Products} from "./features/products/Products"
 import 'jquery/dist/jquery.min.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.js';
+import {ProductCategory } from './features/category/ProductCategory';
 
 function App() {
   return (
@@ -19,8 +17,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}>
           <Route index  path='overview' element={<Overview/>} ></Route>
-          <Route path='manageitems' element={<ManageItem/>} ></Route>
           <Route path='products' element={<Products/>} ></Route>
+          <Route path='category' element={<ProductCategory/>} ></Route>
           {/* <Route path='categories' element={<ProductCategories/>} ></Route>
           <Route path='notifications' element={<Notifications/>} ></Route> */}
         </Route>

@@ -1,5 +1,5 @@
 import React from "react";
-import { AddItem } from "../manageItems/AddItem";
+import { AddItem } from "./AddItem";
 
 export const EditItemModal = ({ id }) => {
   console.log(id);
@@ -17,7 +17,7 @@ export const EditItemModal = ({ id }) => {
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">
-              New Product 
+              New Product
             </h5>
             <button
               type="button"
@@ -27,7 +27,7 @@ export const EditItemModal = ({ id }) => {
             ></button>
           </div>
           <div class="modal-body">
-            <AddItem/>
+            <AddItem />
           </div>
           <div class="modal-footer">
             <button

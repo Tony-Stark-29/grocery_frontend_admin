@@ -13,25 +13,23 @@ export const AddItem = () => {
   const [priceEntered, setPriceEntered] = useState("");
   const [stockEntered, setStockEntered] = useState("");
   const [unitSelected, setUnitSelected] = useState("");
-  const [offerEntered,setOfferEntered]=useState("");
+  const [offerEntered, setOfferEntered] = useState("");
   const [url, setUrl] = useState("");
   const [msg, setMsg] = useState("");
   const [msgType, setMsgType] = useState("");
   const { categories } = useGroceryContext() || [];
 
-  const clearAll=() => {
-
-    setCategorySelected('');
-    setDescriptionEntered('');
-    setTagsEntered('');
-    setPriceEntered('');
-    setStockEntered('');
-    setUnitSelected('');
-    setOfferEntered('');
-    setUrl('');
-    setMsg('');
-    setMsgType('');
-
+  const clearAll = () => {
+    setCategorySelected("");
+    setDescriptionEntered("");
+    setTagsEntered("");
+    setPriceEntered("");
+    setStockEntered("");
+    setUnitSelected("");
+    setOfferEntered("");
+    setUrl("");
+    setMsg("");
+    setMsgType("");
   };
   const handleSubmit = async () => {
     if (
@@ -69,11 +67,7 @@ export const AddItem = () => {
   };
 
   return (
-    <form
-      onSubmit={(e) => e.preventDefault()}
-      className="row  px-3 py-2 m-1"
-    >
-       
+    <form onSubmit={(e) => e.preventDefault()} className="row  px-3 py-2 m-1">
       <div className="d-flex flex-column flex-md-row p-0">
         <div className="col col-md-8 p-3">
           <div className="row">

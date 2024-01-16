@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { useGroceryContext } from "../../hooks/useGroceryContext";
 import { deleteProduct } from "../../api/groceryProductApi";
 import { Alert } from "../alert/Alert";
-import { AddItem } from "../manageItems/AddItem";
+import { AddItem } from "./AddItem";
 import { ProductListTable } from "./ProductListTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { EditItemModal } from "./EditItemModal";
-import spinning_dots from"../../resources/imgs/spinning-dots.svg";
-
+import spinning_dots from "../../resources/imgs/spinning-dots.svg";
 
 export const Products = () => {
   const [msg, setMsg] = useState("");
@@ -59,23 +58,29 @@ export const Products = () => {
                   Category
                 </option>
               </select>
-              <EditItemModal/> 
+              <EditItemModal />
             </div>
-   
           </div>
         </div>
       </div>
       <div className="row m-auto border ">
-        {!products && <div>
-          <img src={spinning_dots} alt="loading..." style={{width:"150px"}} />
-        </div> }
-        {products && <ProductListTable
-          products={products}
-          handleDelete={handleDelete}
-          handleEditItem={handleEditItem}
-        />}
+        {!products && (
+          <div>
+            <img
+              src={spinning_dots}
+              alt="loading..."
+              style={{ width: "150px" }}
+            />
+          </div>
+        )}
+        {products && (
+          <ProductListTable
+            products={products}
+            handleDelete={handleDelete}
+            handleEditItem={handleEditItem}
+          />
+        )}
       </div>
-      
     </section>
   );
 };

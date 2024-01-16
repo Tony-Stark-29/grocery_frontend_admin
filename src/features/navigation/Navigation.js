@@ -59,7 +59,7 @@ export const Navigation = () => {
             <li class="nav-item">
               <Link
                 class="nav-link p-lg-3  d-flex justify-content-evenly align-items-center"
-                href="#"
+                to="category"
               >
                 <FontAwesomeIcon icon={faListUl} />
                 <span>Categories</span>
