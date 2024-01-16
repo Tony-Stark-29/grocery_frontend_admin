@@ -1,8 +1,8 @@
 import React from "react";
-import { AddItem } from "./AddItem";
+import { AddItem } from "./ProductForm";
 
-export const EditItemModal = ({ id }) => {
-  console.log(id);
+export const ProductFormModal = ({ id }) => {
+ 
   return (
     <div
       class="modal fade"
@@ -30,15 +30,9 @@ export const EditItemModal = ({ id }) => {
             <AddItem />
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Understood
+             
+            <button type="button" class="btn btn-outline-success">
+              Add
             </button>
           </div>
         </div>

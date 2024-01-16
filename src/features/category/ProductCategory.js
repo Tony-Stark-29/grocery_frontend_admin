@@ -58,10 +58,10 @@ const cat = [
 export const ProductCategory = () => {
   return (
     <section className="container-flex bg-light">
-      <div className="row">
+      <div className="row m-auto p-2">
         <div className="col-12">
           <div className="row p-2">
-            <h3 className="text-start">Product Categories</h3>
+            <h3 className="text-start">Categories</h3>
           </div>
           <div className="row p-2 m-2 justify-content-end">
             <button

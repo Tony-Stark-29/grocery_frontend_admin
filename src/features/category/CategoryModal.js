@@ -30,15 +30,8 @@ export const CategoryModal = () => {
             <CategoryForm />
           </div>
           <div className="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">
-              Save changes
+            <button type="button" class="btn btn-outline-success">
+             Add
             </button>
           </div>
         </div>

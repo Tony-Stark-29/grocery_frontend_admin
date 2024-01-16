@@ -27,10 +27,11 @@ export const GroceryProductContextProvider = ({ children }) => {
     const getData = async () => {
       try {
         const categories = await getAllCategories();
+      
         const products = await getAllProducts();
 
         dispatch({type:"SET_PRODUCTS",payload:products.products});
-        dispatch({type:"SET_CATEGORIES",payload:categories.category});
+        dispatch({type:"SET_CATEGORIES",payload:categories.categories});
 
       } catch (error) {
 

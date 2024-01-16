@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGroceryContext } from "../../hooks/useGroceryContext";
 import { deleteProduct } from "../../api/groceryProductApi";
 import { Alert } from "../alert/Alert";
-import { AddItem } from "./AddItem";
+import { AddItem } from "./ProductForm";
 import { ProductListTable } from "./ProductListTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
-import { EditItemModal } from "./EditItemModal";
+import { ProductFormModal } from "./ProductFormModal";
 import spinning_dots from "../../resources/imgs/spinning-dots.svg";
 
 export const Products = () => {
   const [msg, setMsg] = useState("");
   const [msgType, setMsgType] = useState("");
   const [editItemId, setEditItemId] = useState("");
+  const [categorySelected, setCategorySelected] = useState("All");
+  const [searchText, setSearchText] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState("");
   const { products } = useGroceryContext();
+  const { categories } = useGroceryContext();
 
+  useEffect(() => {
+    if (products) {
+      const filtered = products.filter(
+        (product) =>
+          (categorySelected === "All" ||
+            product.category.toLowerCase() ===
+              categorySelected.toLowerCase()) &&
+          (
+            product.name.toLowerCase().includes(searchText.toLocaleLowerCase()))
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [categorySelected, searchText,products]);
   const handleDelete = async (_id) => {
     try {
       const product = await deleteProduct(_id);
@@ -31,6 +48,10 @@ export const Products = () => {
     setEditItemId(id);
   };
 
+  const handleCategoryFilter = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <section className="container p-2 bg-light">
       <div className="row m-auto p-2">
@@ -41,6 +62,8 @@ export const Products = () => {
               placeholder={"Search"}
               type="text"
               className="col my-4 form-control"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
           </div>
           <div className="col-12 col-lg-6">
@@ -52,13 +75,21 @@ export const Products = () => {
               >
                 <FontAwesomeIcon icon={faAdd} /> Add Product
               </button>
-              <select className="w-50 m-2 form-control " name="" id="">
-                <option value="Fruits">Fruits</option>
-                <option value="Category " selected disabled>
-                  Category
-                </option>
+
+              <select
+                className="w-50 m-2 form-control "
+                onChange={(e) => setCategorySelected(e.target.value)}
+              >
+                <option value="All">All</option>
+                {categories &&
+                  categories.map(({ category, _id }) => (
+                    <option key={_id} value={category}>
+                      {category}
+                    </option>
+                  ))}
               </select>
-              <EditItemModal />
+
+              <ProductFormModal />
             </div>
           </div>
         </div>
@@ -75,7 +106,7 @@ export const Products = () => {
         )}
         {products && (
           <ProductListTable
-            products={products}
+            products={filteredProducts}
             handleDelete={handleDelete}
             handleEditItem={handleEditItem}
           />

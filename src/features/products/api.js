@@ -30,7 +30,7 @@ export const getCategories = async () => {
     throw Error(categories.error)
   }
 
-  return categories.category;
+  return categories;
 };
 
 export const uploadImage = async (imgSrc) => {
